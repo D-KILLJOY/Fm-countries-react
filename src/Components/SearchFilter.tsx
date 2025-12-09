@@ -6,9 +6,16 @@ interface FilterProps {
     fltrStatFunc: () => void;
     fltr: string;
     selFltrFunc: (selRegion: string) => void;
+    updSrch: (val: string) => void;
 }
 
-function Search({ fltrStat, fltrStatFunc, fltr, selFltrFunc }: FilterProps) {
+function Search({
+    fltrStat,
+    fltrStatFunc,
+    fltr,
+    selFltrFunc,
+    updSrch,
+}: FilterProps) {
     return (
         <section className="px-4 flex flex-col gap-11 ">
             <label
@@ -21,6 +28,7 @@ function Search({ fltrStat, fltrStatFunc, fltr, selFltrFunc }: FilterProps) {
                     name="input-sec"
                     className="w-full h-full border-0 outline-0 placeholder:text-main-text"
                     placeholder="Search for a country..."
+                    onChange={(e) => updSrch(e.target.value)}
                 />
             </label>
 
@@ -40,12 +48,12 @@ function Search({ fltrStat, fltrStatFunc, fltr, selFltrFunc }: FilterProps) {
                 </p>
                 {fltrStat === true && (
                     <ul className="absolute w-full bg-element left-0 top-14  py-4 px-8 rounded-lg flex flex-col gap-2 text-sm">
-                        <li onClick={() => selFltrFunc("")}> Show all</li>
                         <li onClick={() => selFltrFunc("Africa")}> Africa</li>
-                        <li>Africa</li>
-                        <li>Africa</li>
-                        <li>Africa</li>
-                        <li>Africa</li>
+                        <li onClick={() => selFltrFunc("Americas")}>America</li>
+                        <li onClick={() => selFltrFunc("Asia")}>Asia</li>
+                        <li onClick={() => selFltrFunc("Europe")}>Europe</li>
+                        <li onClick={() => selFltrFunc("Oceania")}>Oceania</li>
+                        <li onClick={() => selFltrFunc("")}> Show all</li>
                     </ul>
                 )}
             </div>

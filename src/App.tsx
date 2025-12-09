@@ -8,7 +8,8 @@ import Countries from "./Components/Countries";
 function App() {
     const [theme, setTheme] = useState<"dark" | "light">("dark");
     const [filterStat, setFilterStat] = useState<boolean>(false);
-    const [filter, setFilter] = useState<string>("empty");
+    const [filter, setFilter] = useState<string>("");
+    const [searchInput, setSearchInput] = useState<string>("");
     const [allCountries, setAllCountries] = useState<any[]>([]);
     const [dispCountries, setDispCountries] = useState<any[]>([]);
 
@@ -22,6 +23,39 @@ function App() {
 
     function selectFilter(selRegion: string) {
         setFilter(selRegion);
+
+        if (selRegion === "") {
+            setDispCountries(allCountries);
+        } else {
+            setDispCountries(
+                allCountries.filter((filtered) => filtered.region === selRegion)
+            );
+        }
+    }
+
+    console.log(dispCountries);
+
+    useEffect(
+        function searchFilter() {
+            if (searchInput === "") {
+                setDispCountries(allCountries);
+            } else {
+                setDispCountries(
+                    allCountries.filter((filtered) =>
+                        filtered.name.official
+                            .toLowerCase()
+                            .includes(searchInput.toLowerCase())
+                    )
+                );
+            }
+        },
+        [searchInput]
+    );
+
+    function updateSearch(searchVal: string) {
+        const trimmed = searchVal.trim();
+        setSearchInput(trimmed);
+        console.log(trimmed);
     }
 
     useEffect(() => {
@@ -31,7 +65,7 @@ function App() {
                     "https://restcountries.com/v3.1/all?fields=flags,name,population,region,capital"
                 );
                 setAllCountries(response.data);
-                setFilter(""); // full list of countries
+                setFilter("");
             } catch (error: any) {
                 console.error("Error fetching countries:", error.message);
             }
@@ -42,10 +76,7 @@ function App() {
 
     useEffect(() => {
         setDispCountries(allCountries);
-    }, [filter]);
-
-    console.log(allCountries);
-    console.log(dispCountries);
+    }, [allCountries]);
 
     return (
         <>
@@ -55,6 +86,7 @@ function App() {
                 fltrStatFunc={filterStatToggle}
                 fltr={filter}
                 selFltrFunc={selectFilter}
+                updSrch={updateSearch}
             />
             <Countries dispCountries={dispCountries} />
         </>

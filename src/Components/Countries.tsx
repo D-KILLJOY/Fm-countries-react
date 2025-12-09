@@ -3,7 +3,6 @@ interface CountriesProp {
 }
 
 function Countries({ dispCountries }: CountriesProp) {
-    console.log(dispCountries);
     return (
         <section className="flex flex-col justify-center items-center my-15 gap-15">
             {dispCountries.map((country: any) => (
@@ -21,12 +20,12 @@ function Countries({ dispCountries }: CountriesProp) {
 
                     <article className="bg-element px-6 pt-7 pb-12 ">
                         <h3 className="text-xl mb-5 font-bold">
-                            {country.name.common}
+                            {country.name.official}
                         </h3>
                         <p className="font-medium mb-1">
                             Population:{" "}
                             <span className="font-extralight opacity-90 ">
-                                {country.population}
+                                {country.population.toLocaleString()}
                             </span>
                         </p>
                         <p className="font-medium mb-1">
