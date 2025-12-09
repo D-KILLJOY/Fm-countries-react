@@ -1,16 +1,5 @@
-:root {
-    --bg-color: hsl(0, 0%, 99%);
-    --text: hsl(200, 15%, 8%);
-    --elements: hsl(0, 100%, 100%);
-    --input: hsl(0, 0%, 50%);
-}
-
-.dark {
-    --bg-color: hsl(207, 26%, 17%);
-    --text: hsl(0, 100%, 100);
-    --elements: hsl(209, 23%, 22%);
-    --input: hsl(0, 100%, 100);
-}
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
 @font-face {
     font-family: "Nunito Sans";
@@ -20,7 +9,33 @@
     font-weight: 100 900;
 }
 
+:root {
+    --font-main-font: "Nunito Sans", sans-serif;
+
+    --background: hsl(0 0% 99%);
+    --color-main-text: hsl(200 15% 8%);
+    --color-element: hsl(0 100% 100%);
+    --color-input: hsl(0 0% 50%);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background: hsl(207 26% 17%);
+        --color-main-text: hsl(0 100% 100%);
+        --color-element: hsl(209 23% 22%);
+        --color-input: hsl(0 100% 100%);
+    }
+}
+
+@theme inline {
+    --color-background: var(--background);
+    --color-element: var(--color-element);
+    --color-input: var(--color-input);
+    --color-main-text: var(--color-main-text);
+}
+
 body {
-    background-color: var(--bg-color);
-    color: var(--text);
+    background-color: var(--color-background);
+    color: var(--color-main-text);
+    font-family: var(--font-main-font);
 }

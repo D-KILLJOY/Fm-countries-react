@@ -1,8 +1,26 @@
 import axios from "axios";
 
 import Header from "./Components/Header";
+import SearchFilter from "./Components/SearchFilter";
+import { useState } from "react";
 
 function App() {
+    const [theme, setTheme] = useState<"dark" | "light">("dark");
+    const [filterStat, setFilterStat] = useState<boolean>(false);
+    const [filter, setFilter] = useState("");
+
+    function themeToggle() {
+        theme === "light" ? setTheme("dark") : setTheme("light");
+    }
+
+    function filterStatToggle() {
+        setFilterStat((prev) => !prev);
+    }
+
+    function selectFilter(selRegion: string) {
+        setFilter(selRegion);
+    }
+
     async function getCountries() {
         try {
             const response = await axios.get(
@@ -17,7 +35,13 @@ function App() {
     getCountries();
     return (
         <>
-            <Header />
+            <Header themeStat={theme} themeTglFunc={themeToggle} />
+            <SearchFilter
+                fltrStat={filterStat}
+                fltrStatFunc={filterStatToggle}
+                fltr={filter}
+                selFltrFunc={selectFilter}
+            />
         </>
     );
 }
