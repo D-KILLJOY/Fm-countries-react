@@ -27,7 +27,7 @@
     }
 }
 
-@theme inline {
+@theme {
     --color-background: var(--background);
     --color-element: var(--color-element);
     --color-input: var(--color-input);

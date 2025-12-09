@@ -7,7 +7,7 @@ interface HeaderProps {
 
 function Header({ themeStat, themeTglFunc }: HeaderProps) {
     return (
-        <header className="bg-element py-6 px-4 shadow-lg mb-5">
+        <header className="bg-element py-6 px-4 shadow-md mb-5">
             <div className="flex justify-between items-center">
                 <h1 className="text-main-text dark:text-main-text text-sm font-bold">
                     Where in the world?

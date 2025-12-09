@@ -19,7 +19,7 @@ function Search({
     return (
         <section className="px-4 flex flex-col gap-11 ">
             <label
-                className="max-w-md h-13 rounded-lg py-2.5 ps-8 pe-4  bg-element flex items-center gap-5 shadow-lg"
+                className="max-w-md h-13 rounded-lg py-2.5 ps-8 pe-4  bg-element flex items-center gap-5 shadow-md"
                 aria-label="input-sec"
             >
                 <FaSearch className="text-xl" />
@@ -33,7 +33,7 @@ function Search({
             </label>
 
             <div
-                className="w-52 bg-element py-4 ps-7 pe-5 rounded-lg shadow-lg relative"
+                className="w-52 bg-element py-4 ps-7 pe-5 rounded-lg shadow-md relative"
                 onClick={fltrStatFunc}
             >
                 <p className="flex items-center justify-between text-sm">
@@ -47,7 +47,7 @@ function Search({
                     )}
                 </p>
                 {fltrStat === true && (
-                    <ul className="absolute w-full bg-element left-0 top-14  py-4 px-8 rounded-lg flex flex-col gap-2 text-sm">
+                    <ul className="absolute w-full bg-element left-0 top-14  py-4 px-8 rounded-lg flex flex-col gap-2 text-sm shadow-md">
                         <li onClick={() => selFltrFunc("Africa")}> Africa</li>
                         <li onClick={() => selFltrFunc("Americas")}>America</li>
                         <li onClick={() => selFltrFunc("Asia")}>Asia</li>
