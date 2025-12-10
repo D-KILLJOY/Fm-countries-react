@@ -18,13 +18,11 @@
     --color-input: hsl(0 0% 50%);
 }
 
-@media (prefers-color-scheme: dark) {
-    :root {
-        --background: hsl(207 26% 17%);
-        --color-main-text: hsl(0 100% 100%);
-        --color-element: hsl(209 23% 22%);
-        --color-input: hsl(0 100% 100%);
-    }
+.dark {
+    --background: hsl(207 26% 17%);
+    --color-main-text: hsl(0 100% 100%);
+    --color-element: hsl(209 23% 22%);
+    --color-input: hsl(0 100% 100%);
 }
 
 @theme {
