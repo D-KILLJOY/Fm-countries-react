@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import countries from "../data.json";
 import SearchFilter from "../Components/SearchFilter";
 import Countries from "../Components/Countries";
 
@@ -26,6 +26,14 @@ function Home() {
         }
     }
 
+    useEffect(() => {
+        setAllCountries(countries);
+    }, []);
+
+    useEffect(() => {
+        setDispCountries(allCountries);
+    }, [allCountries]);
+
     useEffect(
         function searchFilter() {
             if (searchInput === "") {
@@ -33,7 +41,7 @@ function Home() {
             } else {
                 setDispCountries(
                     allCountries.filter((filtered) =>
-                        filtered.name.official
+                        filtered.name
                             .toLowerCase()
                             .includes(searchInput.toLowerCase())
                     )
@@ -47,26 +55,6 @@ function Home() {
         const trimmed = searchVal.trim();
         setSearchInput(trimmed);
     }
-
-    useEffect(() => {
-        async function getCountries() {
-            try {
-                const response = await axios.get(
-                    "https://restcountries.com/v3.1/all?fields=flags,name,population,region,capital"
-                );
-                setAllCountries(response.data);
-                setFilter("");
-            } catch (error: any) {
-                console.error("Error fetching countries:", error.message);
-            }
-        }
-
-        getCountries();
-    }, []);
-
-    useEffect(() => {
-        setDispCountries(allCountries);
-    }, [allCountries]);
 
     return (
         <>

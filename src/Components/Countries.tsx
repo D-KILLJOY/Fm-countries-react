@@ -10,22 +10,23 @@ function Countries({ dispCountries }: CountriesProp) {
             {dispCountries.map((country: any) => (
                 <div
                     className="max-w-2xs w-full shadow-md rounded-md overflow-hidden"
-                    key={country.name.official}
+                    key={country.name}
                 >
                     <Link
-                        to={`Details/${country.region}/${country.name.official}`}
+                        to={`Details/${country.region}/${country.name}`}
+                        state={country}
                     >
                         <div className="w-full h-45">
                             <img
                                 src={country.flags.svg}
-                                alt={`Flag of ${country.name.common}`}
+                                alt={`Flag of ${country.name}`}
                                 className=" w-full h-full object-cover"
                             />
                         </div>
 
                         <article className="bg-element px-6 pt-7 pb-12 ">
                             <h3 className="text-xl mb-5 font-bold">
-                                {country.name.official}
+                                {country.name}
                             </h3>
                             <p className="font-medium mb-1">
                                 Population:{" "}

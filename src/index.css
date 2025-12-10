@@ -16,6 +16,8 @@
     --color-main-text: hsl(200 15% 8%);
     --color-element: hsl(0 100% 100%);
     --color-input: hsl(0 0% 50%);
+    --btn-shadow: 0px 0px 6px -1px hsla(0, 0%, 0%, 0.474);
+    --link-shadow: 0px 0px 6px -2px hsla(0, 0%, 0%, 0.474);
 }
 
 .dark {
@@ -23,6 +25,8 @@
     --color-main-text: hsl(0 100% 100%);
     --color-element: hsl(209 23% 22%);
     --color-input: hsl(0 100% 100%);
+    --btn-shadow: 0px 0px 6px -1px hsla(0, 0%, 0%, 0.474);
+    --link-shadow: 0px 0px 6px -2px hsla(0, 0%, 0%, 0.474);
 }
 
 @theme {
@@ -30,6 +34,8 @@
     --color-element: var(--color-element);
     --color-input: var(--color-input);
     --color-main-text: var(--color-main-text);
+    --shadow-btn-shadow: var(--btn-shadow);
+    --shadow-link-shadow: var(--link-shadow);
 }
 
 body {

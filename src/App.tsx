@@ -5,7 +5,7 @@ import Home from "./pages/Home";
 import Details from "./pages/Details";
 
 function App() {
-    const [theme, setTheme] = useState<"dark" | "light">("dark");
+    const [theme, setTheme] = useState<"dark" | "light">("light");
 
     useEffect(() => {
         const savedTheme = localStorage.getItem("theme");
@@ -21,8 +21,8 @@ function App() {
     }, []);
 
     useEffect(() => {
-        localStorage.setItem("theme", theme);
         document.documentElement.classList.toggle("dark", theme === "dark");
+        localStorage.setItem("theme", theme);
     }, [theme]);
 
     function themeToggle() {
