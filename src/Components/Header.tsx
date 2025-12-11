@@ -7,8 +7,8 @@ interface HeaderProps {
 
 function Header({ themeStat, themeTglFunc }: HeaderProps) {
     return (
-        <header className="bg-element py-6 px-4 shadow-md mb-5">
-            <div className="flex justify-between items-center">
+        <header className="bg-element h-20 sticky shadow-md mb-12 top-0 z-50">
+            <div className="flex justify-between items-center h-full px-4">
                 <h1 className="text-main-text dark:text-main-text text-sm font-bold">
                     Where in the world?
                 </h1>
@@ -19,7 +19,7 @@ function Header({ themeStat, themeTglFunc }: HeaderProps) {
                             Dark Mode
                         </span>
                     ) : (
-                        <span className="flex items-center gap-2.5">
+                        <span className="flex items-center gap-2.5 ">
                             <FaSun /> Light Mode
                         </span>
                     )}

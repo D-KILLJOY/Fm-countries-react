@@ -17,7 +17,7 @@ function Search({
     updSrch,
 }: FilterProps) {
     return (
-        <section className="px-4 flex flex-col gap-11 ">
+        <section className="px-4 flex flex-col gap-10 ">
             <label
                 className="max-w-md h-13 rounded-lg py-2.5 ps-8 pe-4  bg-element flex items-center gap-5 shadow-md"
                 aria-label="input-sec"

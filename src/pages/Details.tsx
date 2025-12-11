@@ -16,7 +16,7 @@ function Details() {
     }
 
     return (
-        <main className="px-6 py-6">
+        <main className="px-4">
             <button
                 className="shadow-btn-shadow rounded-xs py-1 px-5 "
                 onClick={() => navigate(-1)}
@@ -26,7 +26,7 @@ function Details() {
                     Back
                 </span>
             </button>
-            <section className="my-15">
+            <section className="my-16">
                 <div className="mb-12 shadow-lg h-55">
                     <img
                         src={countryData.flags.svg}
@@ -100,11 +100,15 @@ function Details() {
                             </p>
                         </div>
                     </section>
-                    {countryData.borders !== undefined && (
-                        <div>
-                            <p className="font-semibold text-md mb-4">
-                                Border Countries:
-                            </p>{" "}
+                    <div>
+                        <p className="font-semibold text-md mb-4">
+                            Border Countries:{" "}
+                        </p>
+                        {countryData.borders === undefined ? (
+                            <span className="font-light text-sm">
+                                No Border Country
+                            </span>
+                        ) : (
                             <div className="flex gap-3 flex-wrap">
                                 {countryData.borders.map((border: any) => {
                                     const bdrCountry = abvToObject(border);
@@ -120,8 +124,8 @@ function Details() {
                                     );
                                 })}
                             </div>
-                        </div>
-                    )}
+                        )}
+                    </div>
                 </article>
             </section>
         </main>
