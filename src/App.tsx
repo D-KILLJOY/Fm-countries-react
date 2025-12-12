@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import Header from "./Components/Header";
 import { Route, Routes } from "react-router";
+import Header from "./Components/Header";
 import Home from "./pages/Home";
 import Details from "./pages/Details";
 

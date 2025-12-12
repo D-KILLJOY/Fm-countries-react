@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
-import countries from "../data.json";
 import SearchFilter from "../Components/SearchFilter";
 import Countries from "../Components/Countries";
+import axios from "axios";
 
 function Home() {
     const [filterStat, setFilterStat] = useState<boolean>(false);
     const [filter, setFilter] = useState<string>("");
     const [searchInput, setSearchInput] = useState<string>("");
     const [allCountries, setAllCountries] = useState<any[]>([]);
+    const [filteredCountries, setFilteredCountries] = useState<any[]>([]);
     const [dispCountries, setDispCountries] = useState<any[]>([]);
 
     function filterStatToggle() {
@@ -18,30 +19,46 @@ function Home() {
         setFilter(selRegion);
 
         if (selRegion === "") {
-            setDispCountries(allCountries);
+            setFilteredCountries(allCountries);
         } else {
-            setDispCountries(
+            setFilteredCountries(
                 allCountries.filter((filtered) => filtered.region === selRegion)
             );
         }
     }
 
     useEffect(() => {
-        setAllCountries(countries);
+        async function getCountries() {
+            try {
+                const response = await axios.get(
+                    "https://restcountries.com/v3.1/all?fields=flags,name,population,region,capital,languages"
+                );
+                setAllCountries(response.data);
+                setFilter("");
+            } catch (error: any) {
+                console.error("Error fetching countries:", error.message);
+            }
+        }
+
+        getCountries();
     }, []);
 
     useEffect(() => {
-        setDispCountries(allCountries);
+        setFilteredCountries(allCountries);
     }, [allCountries]);
+
+    useEffect(() => {
+        setDispCountries(filteredCountries);
+    }, [filteredCountries]);
 
     useEffect(
         function searchFilter() {
             if (searchInput === "") {
-                setDispCountries(allCountries);
+                setDispCountries(filteredCountries);
             } else {
                 setDispCountries(
-                    allCountries.filter((filtered) =>
-                        filtered.name
+                    filteredCountries.filter((filtered) =>
+                        filtered.name.common
                             .toLowerCase()
                             .includes(searchInput.toLowerCase())
                     )

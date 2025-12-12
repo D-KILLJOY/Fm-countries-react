@@ -17,23 +17,23 @@ function Search({
     updSrch,
 }: FilterProps) {
     return (
-        <section className="px-4 flex flex-col gap-10 ">
+        <section className="px-4 flex flex-col gap-y-10 md:flex-row max-w-7xl mx-auto md:justify-between md:px-14  md:flex-wrap ">
             <label
-                className="max-w-md h-13 rounded-lg py-2.5 ps-8 pe-4  bg-element flex items-center gap-5 shadow-md"
+                className="w-full max-w-120 h-13 rounded-lg py-2.5 ps-8 pe-4  bg-element flex items-center gap-5 shadow-md"
                 aria-label="input-sec"
             >
                 <FaSearch className="text-xl" />
                 <input
                     type="text"
                     name="input-sec"
-                    className="w-full h-full border-0 outline-0 placeholder:text-main-text"
+                    className="w-full h-full border-0 outline-0 placeholder:text-input"
                     placeholder="Search for a country..."
                     onChange={(e) => updSrch(e.target.value)}
                 />
             </label>
 
             <div
-                className="w-52 bg-element py-4 ps-7 pe-5 rounded-lg shadow-md relative"
+                className="w-full max-w-52 bg-element py-4 ps-7 pe-5 rounded-lg shadow-md relative "
                 onClick={fltrStatFunc}
             >
                 <p className="flex items-center justify-between text-sm">
@@ -53,7 +53,7 @@ function Search({
                         <li onClick={() => selFltrFunc("Asia")}>Asia</li>
                         <li onClick={() => selFltrFunc("Europe")}>Europe</li>
                         <li onClick={() => selFltrFunc("Oceania")}>Oceania</li>
-                        <li onClick={() => selFltrFunc("")}> Show all</li>
+                        <li onClick={() => selFltrFunc("")}>All Regions</li>
                     </ul>
                 )}
             </div>
