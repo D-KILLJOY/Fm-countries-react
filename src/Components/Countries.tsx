@@ -11,14 +11,14 @@ function Countries({ dispCountries }: CountriesProp) {
                 <section className="grid grid-cols-[repeat(auto-fill,16.5rem)] justify-evenly items-center my-15 mx-auto gap-15 max-w-7xl md:px-14 lg:px-0">
                     {dispCountries.map((country: any) => (
                         <div
-                            className="max-w-66 w-full shadow-md rounded-md "
+                            className="max-w-66 w-full shadow-md rounded-md overflow-hidden"
                             key={country.name.common}
                         >
                             <Link
                                 to={`Details/${country.region}/${country.name.common}`}
                                 state={country.name.common}
                             >
-                                <div className="w-full h-40">
+                                <div className="w-full h-40 ">
                                     <img
                                         src={country.flags.svg}
                                         alt={country.flags.alt}
@@ -27,9 +27,9 @@ function Countries({ dispCountries }: CountriesProp) {
                                 </div>
 
                                 <article className="bg-element px-6 pt-6 pb-12 ">
-                                    <h3 className="text-lg mb-4 font-bold">
+                                    <h2 className="text-lg mb-4 font-bold">
                                         {country.name.common}
-                                    </h3>
+                                    </h2>
                                     <p className="font-medium text-sm mb-2">
                                         Population:{" "}
                                         <span className="font-extralight opacity-90 ">

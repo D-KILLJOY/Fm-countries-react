@@ -74,7 +74,7 @@ function Home() {
     }
 
     return (
-        <>
+        <main>
             <SearchFilter
                 fltrStat={filterStat}
                 fltrStatFunc={filterStatToggle}
@@ -83,7 +83,7 @@ function Home() {
                 updSrch={updateSearch}
             />
             <Countries dispCountries={dispCountries} />
-        </>
+        </main>
     );
 }
 
