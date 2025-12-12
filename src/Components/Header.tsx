@@ -14,14 +14,20 @@ function Header({ themeStat, themeTglFunc }: HeaderProps) {
                 </h1>
                 <div className="text-xs md:text-base" onClick={themeTglFunc}>
                     {themeStat === "light" ? (
-                        <span className="flex items-center gap-2.5">
+                        <button
+                            type="button"
+                            className="flex items-center gap-2.5 cursor-pointer"
+                        >
                             <FaMoon />
                             Dark Mode
-                        </span>
+                        </button>
                     ) : (
-                        <span className="flex items-center gap-2.5 ">
+                        <button
+                            type="button"
+                            className="flex items-center gap-2.5 cursor-pointer"
+                        >
                             <FaSun /> Light Mode
-                        </span>
+                        </button>
                     )}
                 </div>
             </nav>

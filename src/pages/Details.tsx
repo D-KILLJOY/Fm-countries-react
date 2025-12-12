@@ -54,7 +54,7 @@ function Details() {
     return (
         <main className="px-4 w-full max-w-7xl mx-auto md:px-14 lg:px-4 ">
             <button
-                className="shadow-btn-shadow rounded-xs py-1 px-5 "
+                className="shadow-btn-shadow rounded-xs py-1 px-5 cursor-pointer"
                 onClick={() => navigate(-1)}
             >
                 <span className="flex gap-2 items-center text-base font-extralight">
@@ -148,7 +148,7 @@ function Details() {
                         </div>
                     </section>
                     <div className="md:flex gap-4">
-                        <p className="font-semibold text-md mb-4 md:text-lg w-full max-w-fit">
+                        <p className="font-semibold text-md mb-4 md:text-lg w-full max-w-fit whitespace-nowrap">
                             Border Countries:
                         </p>
                         {borderCountries.length === 0 ? (
